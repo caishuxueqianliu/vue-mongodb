@@ -17,20 +17,20 @@ module.exports = {
     https: false,
     hotOnly: false,
     proxy: {
-      // '/api': {
-      //   target: 'https://api.appstoreconnect.apple.com/',
-      //   secure: false,
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/api': ''
-      //   }
-      // },
       '/api1': {
-        target: 'http://192.168.3.71:4000/',
+        target: 'http://106.14.40.150:3691/',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
           '^/api1': ''
+        }
+      },
+      '/api': {
+        target: 'https://api.appstoreconnect.apple.com/',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
         }
       }
     }
