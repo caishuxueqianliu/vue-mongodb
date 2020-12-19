@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69fc6311-cdd0-4087-8b95-8252d7e17112" name="默认更改列表" comment="1">
-      <change afterPath="$PROJECT_DIR$/mongod/routes/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongod/utils/token.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongod/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/mongod/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongod/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mongod/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongod/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mongod/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongod/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/mongod/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongod/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mongod/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/.browserslistrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/src/store/index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +122,7 @@
       <workItem from="1607583493143" duration="10631000" />
       <workItem from="1607908781453" duration="6055000" />
       <workItem from="1608294508279" duration="12132000" />
-      <workItem from="1608357740596" duration="9777000" />
+      <workItem from="1608357740596" duration="10028000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1607346419621</created>
@@ -123,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607346419621</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1">
+      <created>1608368076506</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608368076506</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,12 +166,17 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="399" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.799@0.23.1440.799" timestamp="1606527465560" />
-    <state x="326" y="25" key="CommitChangelistDialog2" timestamp="1608368069731">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state x="326" y="25" key="CommitChangelistDialog2" timestamp="1608368270397">
+      <screen x="0" y="23" width="1440" height="831" />
     </state>
     <state x="326" y="25" key="CommitChangelistDialog2/0.23.1440.799@0.23.1440.799" timestamp="1607346419395" />
     <state x="326" y="25" key="CommitChangelistDialog2/0.23.1440.804@0.23.1440.804" timestamp="1607432913663" />
-    <state x="326" y="25" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1608368069731" />
+    <state x="326" y="25" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1608368076065" />
+    <state x="326" y="25" key="CommitChangelistDialog2/0.23.1440.831@0.23.1440.831" timestamp="1608368270397" />
+    <state x="144" y="79" key="DiffContextDialog" timestamp="1608368170885">
+      <screen x="0" y="23" width="1440" height="831" />
+    </state>
+    <state x="144" y="79" key="DiffContextDialog/0.23.1440.831@0.23.1440.831" timestamp="1608368170885" />
     <state x="585" y="298" key="FileChooserDialogImpl" timestamp="1606529246624">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
@@ -221,10 +241,11 @@
     <state width="1419" height="257" key="GridCell.Tab.0.right/0.23.1440.828@0.23.1440.828" timestamp="1608368053294" />
     <state width="1419" height="257" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1608364502553" />
     <state width="921" height="203" key="GridCell.Tab.0.right/0.23.1440.830@0.23.1440.830" timestamp="1608355779469" />
-    <state x="320" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607346431191">
-      <screen x="0" y="23" width="1440" height="799" />
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2" timestamp="1608368099302">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
     <state x="320" y="164" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1607346431191" />
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1608368099302" />
     <state x="509" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607346385842">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
