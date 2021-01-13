@@ -6,6 +6,10 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
+// mongoose 相关
+const mongoose = require('mongoose')
+
 
 var app = express();
 // body-parser
@@ -23,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/images/", express.static(path.join(__dirname, './images/')))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/login', loginRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -39,9 +43,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+mongoose.connect('mongodb://localhost/sign_server', {useNewUrlParser: true})
+    .then(() => {
+      console.log('连接数据库成功!!')
+      app.listen(4000, () => {
+        console.log('服务器启动成功, 请访问: http://localhost:4000')
+      })
+    })
+    .catch(error => {
+      console.error('连接数据库失败！！！', error)
+    })
 
-app.listen(4000,(res)=>{
-  console.log(res)
-  console.log('4000')
-})
 module.exports = app;

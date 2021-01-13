@@ -18,4 +18,8 @@ router.post('/receive', function(req, res, next) {
   console.log(req.body)
 
 });
+router.get('/captcha1', function (req,res,next) {
+  res.send("ok");
+});
+
 module.exports = router;

@@ -25,9 +25,10 @@ export default {
 </script>
 <style lang="less">
   html body{
-    height: 100%;
+    height: 900px;
     padding: 0px;
     margin: 0px;
+    font-size: 20px;
   }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -35,7 +36,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100%;
+  height: 900px;
 }
 
 #nav {

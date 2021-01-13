@@ -46,13 +46,8 @@ var jwts = {
           "kid": key,
           "typ": "JWT"
         }
-        let private_key =
-'-----BEGIN PRIVATE KEY-----\n' +
-            'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgzYnoujJnw8FA9Jcx\n' +
-            'g4mTr6HzQG2xSrDpiym/Q5nSGAOgCgYIKoZIzj0DAQehRANCAAQCdi1c1EbwR8Dd\n' +
-            'WsBGpKPSwOnbtVuzyl2uJDmIuTUhUHEpE8B0b9fJCVVcXuvw+IOeDClHnxDghY5B\n' +
-            'ux0+yauf\n' +
-            '-----END PRIVATE KEY-----'
+        let private_key = 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgzYnoujJnw8FA9Jcxg4mTr6HzQG2xSrDpiym/Q5nSGAOgCgYIKoZIzj0DAQehRANCAAQCdi1c1EbwR8DdWsBGpKPSwOnbtVuzyl2uJDmIuTUhUHEpE8B0b9fJCVVcXuvw+IOeDClHnxDghY5Bux0+yauf'
+
 
         let created = Math.floor(Date.now() / 1000);
         // let cert = fs.readFileSync(path.join(__dirname, './pem/private_key.pem'));私钥 可以自己生成

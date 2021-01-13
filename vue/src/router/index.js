@@ -9,6 +9,11 @@ const routes = [
     path: '/',
     component: () => import('@/views/layout')
   },
+  { // 登陆页面
+    name: 'login',
+    path: '/login',
+    component: () => import('@/views/login')
+  },
   { // 管理测试页面
     name: 'server',
     path: '/server',

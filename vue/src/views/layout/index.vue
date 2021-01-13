@@ -1,9 +1,7 @@
 <template>
     <div id="index">
-<!--      <button @click="btn1()">添加设备号 </button>-->
-<!--      <button @click="btn2()">查看设备列表 </button>-->
-<!--      <a href="udid.mobileconfig"  download="udid.mobileconfig" target="_blank">获取设备好 </a>-->
-<!--      <button @click="btn1()">添加设备号 </button>-->
+            <button @click="test1()">1</button>
+      <button @click="test2()">2</button>
       <div class="header">
         <img src="/api1/images/Icon1024x1024.png" alt="">
         <div class="title">
@@ -48,7 +46,6 @@
 </template>
 
 <script>
-import { addUdid, getUdid } from '@/api'
 export default {
   name: 'index',
   data () {
@@ -60,7 +57,9 @@ export default {
         '/api1/images/3.jpg',
         '/api1/images/4.jpg',
         '/api1/images/5.jpg'
-      ]
+      ],
+      query: this.$route.query,
+      aa: {}
     // "data": {
     //   "attributes": {
     //     "name": "xuting1adhoc",
@@ -72,23 +71,26 @@ export default {
     }
   },
   created () {
+    var a = this.$route.query.a
+    console.log(a)
   },
   mounted () {
   },
   methods: {
-    btn1 () {
-      addUdid(this.data)
-    },
-    btn2 () {
-      getUdid()
-    },
     onChange (index) {
       // this.$refs.swipe.next()
     //  console.log(index)
+    },
+    test1 () {
+      window.location.href = "http://localhost:8080?a=1&b=2"
+    },
+    test2 () {
+      window.open("http://localhost:8080")
     }
   },
   components: {},
-  watch: {},
+  watch: {
+  },
   computed: {
     value () {
       return 4.5
