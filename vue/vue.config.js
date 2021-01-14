@@ -25,6 +25,14 @@ module.exports = {
           '^/api1': ''
         }
       },
+      '/api2': {
+        target: 'http://localhost:4000/',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api2': ''
+        }
+      },
       '/api': {
         target: 'https://api.appstoreconnect.apple.com/',
         secure: false,

@@ -1,114 +1,26 @@
 <template>
     <div id="index">
-      <button @click="btn()">token </button>
-      <button @click="btn22()">bundle </button>
-            <button @click="btn1()">添加设备号 </button>
-            <button @click="btn2()">查看设备列表 </button>
-            <a href="udid.mobileconfig"  download="udid.mobileconfig" target="_blank">获取设备好 </a>
-            <button @click="btn3()">profileList </button>
-      <button @click="btn4()"> create profile </button>
-      <button @click="btn5()"> cerList </button>
-<!--      <a href="https://api.appstoreconnect.apple.com/v1/profiles/NG98SMWVMZ" target="_blank"-->
-<!--         download="https://api.appstoreconnect.apple.com/v1/profiles/NG98SMWVMZ"> download </a>-->
+      这是后台的入口界面，分为超级签管理后台和自助添加审核导出证书签名后台
+      <div class="container">
+        <div>超级签后台</div>
+        <div>自助添加设备号后台</div>
+      </div>
     </div>
 </template>
 <script>
-import { test, test2, test3 } from '@/api'
-import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'index',
   data () {
-    return {
-      base64data: "MIIdgwYJKoZIhvcNAQcCoIIddDCCHXACAQExCzAJBgUrDgMCGgUAMIIOFgYJKoZIhvcNAQcBoIIOBwSCDgM8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJVVEYtOCI/Pgo8IURPQ1RZUEUgcGxpc3QgUFVCTElDICItLy9BcHBsZS8vRFREIFBMSVNUIDEuMC8vRU4iICJodHRwOi8vd3d3LmFwcGxlLmNvbS9EVERzL1Byb3BlcnR5TGlzdC0xLjAuZHRkIj4KPHBsaXN0IHZlcnNpb249IjEuMCI+CjxkaWN0PgoJPGtleT5BcHBJRE5hbWU8L2tleT4KCTxzdHJpbmc+eGdnYW1lPC9zdHJpbmc+Cgk8a2V5PkFwcGxpY2F0aW9uSWRlbnRpZmllclByZWZpeDwva2V5PgoJPGFycmF5PgoJPHN0cmluZz5aVjI4VzgyRldVPC9zdHJpbmc+Cgk8L2FycmF5PgoJPGtleT5DcmVhdGlvbkRhdGU8L2tleT4KCTxkYXRlPjIwMjAtMDctMTFUMDU6MzU6MjJaPC9kYXRlPgoJPGtleT5QbGF0Zm9ybTwva2V5PgoJPGFycmF5PgoJCTxzdHJpbmc+aU9TPC9zdHJpbmc+Cgk8L2FycmF5PgoJPGtleT5Jc1hjb2RlTWFuYWdlZDwva2V5PgoJPGZhbHNlLz4KCTxrZXk+RGV2ZWxvcGVyQ2VydGlmaWNhdGVzPC9rZXk+Cgk8YXJyYXk+CgkJPGRhdGE+TUlJRjNUQ0NCTVdnQXdJQkFnSUlIWnhzMFlYdGNPY3dEUVlKS29aSWh2Y05BUUVMQlFBd2daWXhDekFKQmdOVkJBWVRBbFZUTVJNd0VRWURWUVFLREFwQmNIQnNaU0JKYm1NdU1Td3dLZ1lEVlFRTERDTkJjSEJzWlNCWGIzSnNaSGRwWkdVZ1JHVjJaV3h2Y0dWeUlGSmxiR0YwYVc5dWN6RkVNRUlHQTFVRUF3dzdRWEJ3YkdVZ1YyOXliR1IzYVdSbElFUmxkbVZzYjNCbGNpQlNaV3hoZEdsdmJuTWdRMlZ5ZEdsbWFXTmhkR2x2YmlCQmRYUm9iM0pwZEhrd0hoY05NakF3TnpFeE1EVXlNakl6V2hjTk1qRXdOekV4TURVeU1qSXpXakNCMERFYU1CZ0dDZ21TSm9tVDhpeGtBUUVNQ2xwV01qaFhPREpHVjFVeFdEQldCZ05WQkFNTVQybFFhRzl1WlNCRWFYTjBjbWxpZFhScGIyNDZJRnBvWlc1bmVtaHZkU0JFWVc1b2RXOGdUbVYwZDI5eWF5QlVaV05vYm05c2IyZDVJRU52TGl3Z1RIUmtMaUFvV2xZeU9GYzRNa1pYVlNreEV6QVJCZ05WQkFzTUNscFdNamhYT0RKR1YxVXhOakEwQmdOVkJBb01MVnBvWlc1bmVtaHZkU0JFWVc1b2RXOGdUbVYwZDI5eWF5QlVaV05vYm05c2IyZDVJRU52TGl3Z1RIUmtMakVMTUFrR0ExVUVCaE1DUTA0d2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURKbFNSTVVjZkVhMFRKbnVkVWYwYmZqbVBwUE8zU0pCYlhwRTlJTm1XTUJTMUw0alo5M0ZVTHAwRURFeVU5Rzlzd21DMStQdkxkM2pYYTJEMVNKejBYdHhsYitBaFV2eW5LNHNJWmdFTW1PdmRDWmIvcEFSS2lxUjdleHZsK013LzhyenE3Y0o3K1BUSERKU0x0cnloMkZ4UzBQSG03V3RXWTdvci9tRENTbEpMQk12OFJGQzNidkhCMjNlN3c2WGM2Rm9CdEdhTUg1UHpHTU1aZ0ZuRDJEdnVpV1BEamJDZmNyUVJKbElyVEl0UEZZUFBmY1JMRDFHZC9jdndVT2pCMk1pNy9xWXExM2YreUc2YTN5Tnp3cjVkQWlNNmxwVlowM2JNZFBUZHFxVGRxQUdEZmtuTXluRlRROTVMNEJ0b3FTcnc5REp2V09WU1ArbDVoRjBFOUFnTUJBQUdqZ2dIeE1JSUI3VEFNQmdOVkhSTUJBZjhFQWpBQU1COEdBMVVkSXdRWU1CYUFGSWduRndtcHRoaGdpK3pydXZaSFdjVlNWS08zTUQ4R0NDc0dBUVVGQndFQkJETXdNVEF2QmdnckJnRUZCUWN3QVlZamFIUjBjRG92TDI5amMzQXVZWEJ3YkdVdVkyOXRMMjlqYzNBd015MTNkMlJ5TVRFd2dnRWRCZ05WSFNBRWdnRVVNSUlCRURDQ0FRd0dDU3FHU0liM1kyUUZBVENCL2pDQnd3WUlLd1lCQlFVSEFnSXdnYllNZ2JOU1pXeHBZVzVqWlNCdmJpQjBhR2x6SUdObGNuUnBabWxqWVhSbElHSjVJR0Z1ZVNCd1lYSjBlU0JoYzNOMWJXVnpJR0ZqWTJWd2RHRnVZMlVnYjJZZ2RHaGxJSFJvWlc0Z1lYQndiR2xqWVdKc1pTQnpkR0Z1WkdGeVpDQjBaWEp0Y3lCaGJtUWdZMjl1WkdsMGFXOXVjeUJ2WmlCMWMyVXNJR05sY25ScFptbGpZWFJsSUhCdmJHbGplU0JoYm1RZ1kyVnlkR2xtYVdOaGRHbHZiaUJ3Y21GamRHbGpaU0J6ZEdGMFpXMWxiblJ6TGpBMkJnZ3JCZ0VGQlFjQ0FSWXFhSFIwY0RvdkwzZDNkeTVoY0hCc1pTNWpiMjB2WTJWeWRHbG1hV05oZEdWaGRYUm9iM0pwZEhrdk1CWUdBMVVkSlFFQi93UU1NQW9HQ0NzR0FRVUZCd01ETUIwR0ExVWREZ1FXQkJTNS8xLytlWFFmMFVqcVRRc3RmR3NNOHhFTGdUQU9CZ05WSFE4QkFmOEVCQU1DQjRBd0V3WUtLb1pJaHZkalpBWUJCQUVCL3dRQ0JRQXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBSVVTeDJVd0VibVJtekRHU21tdHIzaVlZc0w4N2NnR0ppN05qOC95RGs5NnRJbnBkeFRVTHVZanhqQmE0YkFYRFVmcU8yYk9EV3BZQTdyTHU4S2VZMTZiNmc3M0c4UnBZeU1yTEFmR0l6enROZ1RISU1RZWNWWjhPaGVzSml5NG5IbStpd1JDaENnOTUwSFZ2L3F1VzByVDROU0NlRTVNd3FjTFRjT1RWUU55Z3NWb3BlNm1EdjFwTlBSQ0lmYnh5Rnd6VkdERHIvYnYzNDBHbjZLR3ZhaktwSTJpQVpuc3pyZjQycmJtV2l5YUVlWFBvbE9aNXZIOVFxK2lXZnI4bGxtUEo1TDRwZW9XS3pXcVAwT1Raa3JvM0xweDEyUTFtTTZlOHhwV2pzU3N6ZW9RQW1HbTR3bHBWeE9ZeUhXUTVEUGRmdElzVFdKV3p2L1k0WVNDYWprPTwvZGF0YT4KCTwvYXJyYXk+CgoJCQkJCQkJCQkJCQkKCTxrZXk+RW50aXRsZW1lbnRzPC9rZXk+Cgk8ZGljdD4KCQk8a2V5PmJldGEtcmVwb3J0cy1hY3RpdmU8L2tleT4KCQk8dHJ1ZS8+CgkJCQkKCQkJCTxrZXk+YXBwbGljYXRpb24taWRlbnRpZmllcjwva2V5PgoJCTxzdHJpbmc+WlYyOFc4MkZXVS5jb20ubGVtb24uc2hkYmc8L3N0cmluZz4KCQkJCQoJCQkJPGtleT5rZXljaGFpbi1hY2Nlc3MtZ3JvdXBzPC9rZXk+CgkJPGFycmF5PgoJCQkJPHN0cmluZz5aVjI4VzgyRldVLio8L3N0cmluZz4KCQkJCTxzdHJpbmc+Y29tLmFwcGxlLnRva2VuPC9zdHJpbmc+CgkJPC9hcnJheT4KCQkJCQoJCQkJPGtleT5nZXQtdGFzay1hbGxvdzwva2V5PgoJCTxmYWxzZS8+CgkJCQkKCQkJCTxrZXk+Y29tLmFwcGxlLmRldmVsb3Blci50ZWFtLWlkZW50aWZpZXI8L2tleT4KCQk8c3RyaW5nPlpWMjhXODJGV1U8L3N0cmluZz4KCQkJCQoJCQkJPGtleT5hcHMtZW52aXJvbm1lbnQ8L2tleT4KCQk8c3RyaW5nPnByb2R1Y3Rpb248L3N0cmluZz4KCQkJCQoJCQkJPGtleT5jb20uYXBwbGUuZGV2ZWxvcGVyLm5ldHdvcmtpbmcud2lmaS1pbmZvPC9rZXk+CgkJPHRydWUvPgoKCTwvZGljdD4KCTxrZXk+RXhwaXJhdGlvbkRhdGU8L2tleT4KCTxkYXRlPjIwMjEtMDctMTFUMDU6MjI6MjNaPC9kYXRlPgoJPGtleT5OYW1lPC9rZXk+Cgk8c3RyaW5nPnpnZWN5Z21hcHBzdG9yZTwvc3RyaW5nPgoJPGtleT5UZWFtSWRlbnRpZmllcjwva2V5PgoJPGFycmF5PgoJCTxzdHJpbmc+WlYyOFc4MkZXVTwvc3RyaW5nPgoJPC9hcnJheT4KCTxrZXk+VGVhbU5hbWU8L2tleT4KCTxzdHJpbmc+Wmhlbmd6aG91IERhbmh1byBOZXR3b3JrIFRlY2hub2xvZ3kgQ28uLCBMdGQuPC9zdHJpbmc+Cgk8a2V5PlRpbWVUb0xpdmU8L2tleT4KCTxpbnRlZ2VyPjM2NDwvaW50ZWdlcj4KCTxrZXk+VVVJRDwva2V5PgoJPHN0cmluZz40YzY5Y2ZmMS1mZDgwLTRkYjgtYmQzMi01YmFlYzc1YWJjOGU8L3N0cmluZz4KCTxrZXk+VmVy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"
-    }
+    return {}
   },
   created () {
-    // var xx = this.dataURLtoFile(this.base64data, "xx")
-    // this.createDownloadFileUrl("xx", xx)
   },
-  mounted () {},
-  methods: {
-    ...mapActions(['recordToken', 'recordAddUdid', 'recordGetUdidList', 'recordGetProfileList', 'recordCreateProfile', 'recordGetCerList']),
-    btn () {
-      this.recordToken()
-    },
-    btn1 () {
-      // addUdid(this.udid)
-      this.recordAddUdid(
-        {
-          "data": {
-            "attributes": {
-              "name": "iphone11",
-              "platform": "IOS",
-              "udid": "00008030-001D450A36F9802E"
-            },
-            "type": "devices"
-          }
-        }
-      )
-    },
-    btn22 () {
-      test()
-      test2()
-      test3()
-    },
-    btn2 () {
-      this.recordGetUdidList()
-    },
-    btn3 () {
-      this.recordGetProfileList()
-    },
-    btn4 () {
-      this.recordCreateProfile(
-        {
-          "data": {
-            "attributes": {
-              "name": "test1adhoc",
-              "profileType": "IOS_APP_ADHOC"
-            },
-            "relationships": {
-              "bundleId": {
-                "data": {
-                  "id": "4HSBY8Y3Y8",
-                  "type": "bundleIds"
-                }
-              },
-              "certificates": {
-                "data": [
-                  { // "id": "iPhone Distribution: Zhengzhou Danhuo Network Technology Co., Ltd. (ZV28W82FWU)",
-                    "id": "L776H6F6DB",
-                    "type": "certificates"
-                  }
-                ]
-              },
-              "devices": {
-                "data": [
-                  {
-                    "id": "RJA3932BGZ",
-                    "type": "devices"
-                  }
-                ]
-              }
-            },
-            "type": "profiles"
-          }
-        }
-      )
-    },
-    btn5 () {
-      this.recordGetCerList()
-    }
+  mounted () {
   },
+  methods: {},
   components: {},
   watch: {},
-  computed: {
-    ...mapState({
-      udid: state => state.udid
-    }),
-    ...mapGetters({
-      udidRealList: state => state.udidRealList
-    })
-  },
+  computed: {},
   props: {}
 }
 </script>

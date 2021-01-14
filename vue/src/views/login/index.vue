@@ -6,11 +6,12 @@
           <el-form-item label="用户名" prop="user" class="label">
             <el-input type="text" v-model="ruleForm.user" autocomplete="off" clearable></el-input>
           </el-form-item>
-          <el-form-item label="确认密码" prop="pass" class="label">
+          <el-form-item label="密码" prop="pass" class="label">
             <el-input type="password" v-model="ruleForm.pass" autocomplete="off" clearable></el-input>
           </el-form-item>
-          <el-form-item label="验证码" prop="code" class="label">
+          <el-form-item  label="验证码" prop="code" class="label captchaBox">
             <el-input type="text" v-model="ruleForm.code" autocomplete="off" clearable></el-input>
+            <img class='captcha' :src="captchaUrl" @click="changeCaptcha()">
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
@@ -21,6 +22,8 @@
     </div>
 </template>
 <script>
+import { reqLogin } from "../../api/server"
+import { mapActions } from 'vuex'
 export default {
   name: "login",
   data () {
@@ -49,6 +52,7 @@ export default {
       }
     }
     return {
+      captchaUrl: "/api2/login/captcha",
       ruleForm: {
         pass: '',
         user: '',
@@ -57,7 +61,7 @@ export default {
       rules: {
         pass: [
           { validator: validatePass, trigger: 'blur' },
-          { min: 6, max: 8, message: '密码长度在 6 到 8 个字符', trigger: 'blur' }
+          { min: 4, max: 8, message: '密码长度在 4 到 8 个字符', trigger: 'blur' }
         ],
         user: [
           { validator: checkUser, trigger: 'blur' },
@@ -70,11 +74,20 @@ export default {
       }
     }
   },
+  mounted () {
+    // getcaptcha()
+  },
   methods: {
+    ...mapActions('user', [
+      'RECORD_UPDATEUSERINFO'
+    ]),
+    changeCaptcha () {
+      this.captchaUrl = "/api2/login/captcha?" + Math.random()
+    },
     submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          alert('submit!')
+          this.RECORD_UPDATEUSERINFO(this.ruleForm)
         } else {
           console.log('error submit!!')
           return false
@@ -106,6 +119,13 @@ export default {
     margin-right: 10rem;
     .box{
       width: 25rem;
+      /deep/ .el-form-item__content{
+        display: flex;
+        flex-flow: row nowrap;
+        .captcha{
+              width: 8rem;
+            }
+      }
     }
     /deep/ .el-form-item__label{
       color: white;

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getToken, addUdid, getUdid, getProfileList, createProfile , getCerList } from '@/api'
+import { getToken, addUdid, getUdid, getProfileList, createProfile, getCerList } from '@/api'
+import user from "./modules/user"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -79,5 +80,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    user
   }
 })

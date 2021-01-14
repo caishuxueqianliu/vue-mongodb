@@ -32,13 +32,13 @@ router.get('/captcha', function (req,res,next) {
 });
 
 // 登陆接口
-router.post('/login',(res,req,next)=>{
+router.post('/login',(req,res,next)=>{
     const { user, pass, code } = req.body
     UserModel.findOne({username:user}, function (err, user) {
         if(user) {
             if (code != req.session.captcha) {
                 res.send({code: 1, msg: '验证码错误'})
-            } else if (pass != user.password) {
+            } else if (md5(pass) != user.password) {
                 res.send({code: 1, msg: '密码错误'})
             } else {
                 res.send({code: 0, msg: '登陆成功', data: user})
