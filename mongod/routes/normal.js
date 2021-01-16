@@ -12,15 +12,15 @@ const DefaultCert = require('../models/defaultCertModel');
 // 提供前端可以选择的cert选项
 router.get("/getcertlists",async (req,res,next)=>{
     const certLists = await fileOperation.reddir("assets")
+    // const defaultcert = await DefaultCert.find().name
     res.send({data:certLists})
 })
 
 // 每一个cert目录下的所有文件输出提供前端下载和展示
 router.get("/getcertlist",async (req,res,next)=>{
     const cert = req.query.cert
-    const defaultcert = await DefaultCert.find().name
     const certList = await fileOperation.reddir("assets/" + cert)
-    res.send({data:{certList, defaultcert}})
+    res.send({data: certList})
 })
 // 读取文件内容
 router.get("/readfilecontent",async (req,res,next)=>{

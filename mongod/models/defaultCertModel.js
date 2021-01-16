@@ -17,7 +17,7 @@ const defaultCertModel = mongoose.model('defaultcerts', defaultcertSchema);
 // 初始化默认超级管理员用户: admin/admin
 defaultCertModel.findOne({name: 'test1'}).then(cert => {
     if(!cert) {
-        defaultCertModel.create({username: 'test1'}).then(cert => {
+        defaultCertModel.create({name: 'test1'}).then(cert => {
                 console.log('初始化test账号。。。。。 ')
             })
     }

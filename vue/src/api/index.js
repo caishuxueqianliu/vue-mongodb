@@ -44,10 +44,7 @@ export const addUdid = (value) => axios.post(BASE + '/v1/devices', value)
 export const getUdid = () => axios.get(BASE + '/v1/devices')
 export const getProfileList = () => axios.get(BASE + '/v1/profiles')
 export const createProfile = (data) => axios.post(BASE + '/v1/profiles', data)
-// DELETE https://api.appstoreconnect.apple.com/v1/profiles/{id}
-// GET https://api.appstoreconnect.apple.com/v1/profiles/{id}/devices
-// https://api.appstoreconnect.apple.com/v1/bundleIds
-// https://api.appstoreconnect.apple.com/v1/certificates
+
 export const test = () => axios.get(BASE + '/v1/bundleIds')
 export const test2 = () => axios.get(BASE + '/v1/certificates')
 export const test3 = () => axios.get(BASE + '/v1/profiles/RWPZTZ4T7U')

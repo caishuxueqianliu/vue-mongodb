@@ -29,8 +29,8 @@ const normalCert = {
   actions: {
     async RECORD_UPDATECERTLISTS ({ commit }) {
       const { data } = await getCertLists()
-      commit("updatecertLists", data.data.certLists)
-      commit("updatecertLists", data.data.certLists)
+      commit("updatecertLists", data.data)
+    // commit("updateDefaultCert", data.defaultCert)
     },
     async RECORD_UPDATECERTLIST ({ commit }, val) {
       const { data } = await getCertList(val)
