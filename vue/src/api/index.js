@@ -7,7 +7,7 @@ const BASE1 = '/api1'
 
 axios.interceptors.request.use(function (config) {
   const token = JSON.parse(window.localStorage.getItem('token'))
-  console.log(token)
+  // console.log(token)
   config.headers.Authorization = 'Bearer ' + token
   return config
 }, function (error) {

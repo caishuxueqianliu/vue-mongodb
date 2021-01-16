@@ -17,10 +17,12 @@ const routes = [
   { // 管理测试页面
     name: 'server',
     path: '/server',
-    component: () => import('@/views/server')
-  }
-]
-
+    component: () => import('@/views/server'),
+    children: [
+      { path: 'supersign', component: () => import('@/views/supersign') },
+      { path: 'normalsign', component: () => import('@/views/normalsign') }
+    ]
+  }]
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
