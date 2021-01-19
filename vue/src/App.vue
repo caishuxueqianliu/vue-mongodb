@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+    <div class="app-top">
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/server' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -67,4 +75,15 @@ export default {
   border-radius: 4px;
   min-height: 36px;
 }
+  .app-top{
+    height: 60px;
+    background-color: #333;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    /deep/ span{
+      color: white;
+    }
+  }
 </style>

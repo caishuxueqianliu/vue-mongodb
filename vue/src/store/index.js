@@ -26,7 +26,7 @@ export default new Vuex.Store({
       state.udidList = udidList
     },
     SET_PROFILELIST (state, profileList) {
-      state.profileList = profileList
+      state.profileList = profileList.reverse()
     },
     SET_PROFILE (state, profile) {
       state.profile = profile
@@ -67,9 +67,9 @@ export default new Vuex.Store({
       const { data } = await getUdid()
       commit('SET_UDIDLIST', data.data)
     },
-    recordGetProfileList ({ commit }) {
-      const profileList = getProfileList()
-      commit('SET_PROFILELIST', profileList)
+    async recordGetProfileList ({ commit }) {
+      const { data } = await getProfileList()
+      commit('SET_PROFILELIST', data.data)
     },
     recordCreateProfile ({ commit }, data) {
       const profile = createProfile(data)
@@ -77,7 +77,7 @@ export default new Vuex.Store({
     },
     async recordGetCerList ({ commit }) {
       const { data } = await getCerList()
-      commit('SET_CERLIST', data)
+      commit('SET_CERLIST', data.data)
     }
   },
   modules: {
