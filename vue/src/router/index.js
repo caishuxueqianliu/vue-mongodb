@@ -4,6 +4,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    redirect: 'server/normalsign'
+  },
   { // 下载界面
     name: 'index',
     path: '/',

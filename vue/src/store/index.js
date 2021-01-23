@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getToken, addUdid, getUdid, getProfileList, createProfile, getCerList } from '@/api'
+import { getToken, addUdid, getUdid, getProfileList, createProfile, getCerList, getBundleIdList, delProfile } from '@/api'
 import user from "./modules/user"
 import normalCert from "./modules/normalCert"
+import { Notification } from "element-ui"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -12,9 +13,13 @@ export default new Vuex.Store({
     udidList: [],
     profileList: [],
     profile: '',
-    cerList: []
+    cerList: [],
+    bundleIDList: []
   },
   mutations: {
+    SET_BUNDLEIDLIST (state, bundleIDList) {
+      state.bundleIDList = bundleIDList
+    },
     SET_TOKEN (state, token) {
       state.token = token
       window.localStorage.setItem('token', JSON.stringify(token))
@@ -55,13 +60,27 @@ export default new Vuex.Store({
     async recordAddUdid ({ commit }, data) {
       try {
         await addUdid(data)
+        this.recordGetUdidList()
       } catch (error) {
         if (error.response.status === 409) {
           console.log("udid exsit")
-          commit('SET_UDID', data.data.attributes.udid)
-          dispatch('recordGetUdidList')
+        //  commit('SET_UDID', data.data.attributes.udid)
+          // dispatch('recordGetUdidList')
         }
       }
+    },
+    async recordGetBundleIDList ({ commit }) {
+      const { data } = await getBundleIdList()
+      commit('SET_BUNDLEIDLIST', data.data)
+    },
+    recordDelProfile ({ commit }, id) {
+      delProfile(id).then(() => {
+        Notification.success({
+          title: '删除成功',
+          message: "删除一条签名文件"
+        })
+      })
+      // commit('SET_BUNDLEIDLIST', data.data)
     },
     async recordGetUdidList ({ commit }) {
       const { data } = await getUdid()
@@ -72,8 +91,12 @@ export default new Vuex.Store({
       commit('SET_PROFILELIST', data.data)
     },
     recordCreateProfile ({ commit }, data) {
-      const profile = createProfile(data)
-      commit('SET_PROFILE', profile)
+      createProfile(data).then( () => {
+        Notification.success({
+          title: '新建成功',
+          message: "新间一条签名文件"
+        })
+      })
     },
     async recordGetCerList ({ commit }) {
       const { data } = await getCerList()

@@ -1,4 +1,4 @@
-import { getCertLists, getCertList, getfileContent } from '@/api/server'
+import { getCertLists, getCertList, downLoadFile, downLoadProfileFile } from '@/api/server'
 import { Notification } from 'element-ui'
 const normalCert = {
   namespaced: true,
@@ -6,9 +6,14 @@ const normalCert = {
     certLists: [],
     certList: [],
     certName: '',
-    defaultCert: ''
+    defaultCert: '',
+    base64: ""
   },
   mutations: {
+    // 更新base64
+    updatebase64 (state, base64) {
+      state.base64 = base64
+    },
     // 更新所有cert目录的信息
     updatecertLists (state, certLists) {
       state.certLists = certLists
@@ -27,6 +32,14 @@ const normalCert = {
     }
   },
   actions: {
+    async RECORD_UPDATEBASE64 ({ commit }, certForm) {
+      commit("updatebase64", certForm.base64)
+      downLoadFile({ certForm })
+    },
+    async RECORD_UPDATEBASE64PROFILE ({ commit }, profileForm) {
+      commit("updatebase64", profileForm.base64)
+      downLoadProfileFile({ profileForm })
+    },
     async RECORD_UPDATECERTLISTS ({ commit }) {
       const { data } = await getCertLists()
       commit("updatecertLists", data.data)

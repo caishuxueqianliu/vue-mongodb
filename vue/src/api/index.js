@@ -50,3 +50,8 @@ export const test2 = () => axios.get(BASE + '/v1/certificates')
 export const test3 = () => axios.get(BASE + '/v1/profiles/RWPZTZ4T7U')
 
 export const getCerList = () => axios.get(BASE + '/v1/certificates')
+
+export const delProfile = (id) => axios.delete(BASE + '/v1/profiles/'+id)
+export const getBundleIdList = () => axios.get(BASE + '/v1/bundleIds')
+// DELETE https://api.appstoreconnect.apple.com/v1/profiles/{id}
+// https://api.appstoreconnect.apple.com/v1/bundleIds

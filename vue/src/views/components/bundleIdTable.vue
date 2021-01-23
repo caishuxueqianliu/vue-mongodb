@@ -1,7 +1,7 @@
 <template>
     <div id="index">
       <el-table
-        :data="cerList"
+        :data="bundleIDList"
         style="width: 100%">
         <el-table-column
           label="ID"
@@ -12,17 +12,17 @@
           prop="attributes.name">
         </el-table-column>
         <el-table-column
-          label="certificateType"
-          prop="attributes.certificateType">
+          label="identifier"
+          prop="attributes.identifier">
         </el-table-column>
 <!--        <el-table-column-->
 <!--          label="certificateContent"-->
 <!--          prop="attributes.certificateContent">-->
 <!--        </el-table-column>-->
-        <el-table-column
-          label="expirationDate"
-          prop="attributes.expirationDate">
-        </el-table-column>
+<!--        <el-table-column-->
+<!--          label="expirationDate"-->
+<!--          prop="attributes.expirationDate">-->
+<!--        </el-table-column>-->
         <el-table-column
           align="right">
           <template slot="header" slot-scope="scope">
@@ -32,9 +32,9 @@
               placeholder="输入关键字搜索"/>
           </template>
           <template slot-scope="scope">
-            <el-button
-              size="mini"
-              @click="handleDownLoad(scope.$index, scope.row)">DownLoad</el-button>
+<!--            <el-button-->
+<!--              size="mini"-->
+<!--              @click="handleDownLoad(scope.$index, scope.row)">DownLoad</el-button>-->
 <!--            <el-button-->
 <!--              size="mini"-->
 <!--              type="danger"-->
@@ -45,7 +45,7 @@
     </div>
 </template>
 <script>
-import {mapState, mapActions} from "vuex"
+import { mapState, mapActions } from "vuex"
 
 export default {
   data () {
@@ -55,18 +55,18 @@ export default {
   },
   methods: {
     ...mapActions('normalCert', ['RECORD_UPDATEBASE64']),
-    handleDownLoad (index, row) {
-      console.log(index, row)
-      const base64 = row.attributes.certificateContent
-      const name = row.attributes.name
-      const certForm = { base64, name }
-      this.RECORD_UPDATEBASE64(certForm)
-    },
+    // handleDownLoad (index, row) {
+    //   console.log(index, row)
+    //   const base64 = row.attributes.certificateContent
+    //   const name = row.attributes.name
+    //   const certForm = { base64, name }
+    //   this.RECORD_UPDATEBASE64(certForm)
+    // },
     // handleDelete (index, row) {
     //   console.log(index, row)
     // }
   },
-  computed: {
+  computed:{
     ...mapState({
       udidList: state => state.udidList,
       profileList: state => state.profileList,

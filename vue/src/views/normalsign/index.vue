@@ -15,14 +15,16 @@
       </div>
       <div class="content">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-menu-item index="1">设备号列表</el-menu-item>
-          <el-menu-item index="2">证书列表</el-menu-item>
-          <el-menu-item index="3">签名列表</el-menu-item>
-          <el-menu-item index="4">处理中心</el-menu-item>
+          <el-menu-item index="1">bundleId列表</el-menu-item>
+          <el-menu-item index="2">设备号列表</el-menu-item>
+          <el-menu-item index="3">证书列表</el-menu-item>
+          <el-menu-item index="4">签名列表</el-menu-item>
+          <el-menu-item index="5">处理中心</el-menu-item>
         </el-menu>
-        <udidTable v-if="activeIndex==1"></udidTable>
-        <certTable v-else-if="activeIndex==2"></certTable>
-        <profileTable v-else-if="activeIndex==3"></profileTable>
+        <bundleIdTable v-if="activeIndex==1"></bundleIdTable>
+        <udidTable v-else-if="activeIndex==2"></udidTable>
+        <certTable v-else-if="activeIndex==3"></certTable>
+        <profileTable v-else-if="activeIndex==4"></profileTable>
       </div>
     </div>
 </template>
@@ -31,12 +33,13 @@ import { mapActions, mapState } from 'vuex'
 import udidTable from '@/views/components/udidTable.vue'
 import profileTable from '@/views/components/profileTable.vue'
 import certTable from '@/views/components/certTable.vue'
+import bundleIdTable from '@/views/components/bundleIdTable.vue'
 export default {
   name: 'index',
   data () {
     return {
       radioValue: "test1",
-      activeIndex: '1'
+      activeIndex: '4'
     }
   },
   created () {
@@ -46,26 +49,28 @@ export default {
     this.recordGetUdidList()
     this.recordGetProfileList()
     this.recordGetCerList()
+    this.recordGetBundleIDList()
     this.RECORD_UPDATECERTLISTS()
     this.RECORD_UPDATECERTLIST(this.radioValue)
   },
   methods: {
     ...mapActions('normalCert', ['RECORD_UPDATECERTLISTS', 'RECORD_UPDATECERTLIST']),
-    ...mapActions(['recordToken', 'recordGetUdidList', 'recordGetProfileList', 'recordGetCerList']),
+    ...mapActions(['recordToken', 'recordGetUdidList', 'recordGetProfileList', 'recordGetCerList', 'recordGetBundleIDList']),
     handleSelect (key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
       this.activeIndex = key
     }
   },
   components: {
     profileTable,
     udidTable,
-    certTable
+    certTable,
+    bundleIdTable
   },
   watch: {
     radioValue (val) {
       if (val) {
-        console.log(val)
+        // console.log(val)
         this.RECORD_UPDATECERTLIST(val)
       }
     }
