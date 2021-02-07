@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/iosSIgn/iOS-UDID-Safari" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/server/xuegaogame" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vue" vcs="Git" />
   </component>
 </project>

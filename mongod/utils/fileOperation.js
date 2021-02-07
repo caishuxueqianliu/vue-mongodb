@@ -10,6 +10,7 @@ var list = []
                     list.push(item)
                 }
             })
+           // list =files
          resolve(list)
         });
     }))

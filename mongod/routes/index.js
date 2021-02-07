@@ -22,4 +22,5 @@ router.get('/captcha1', function (req,res,next) {
   res.send("ok");
 });
 
+
 module.exports = router;
